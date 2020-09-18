@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 // import Card from "./Card";
 // import { getCategories } from "./apiCore";
 
-const Checkbox = ({ categories }) => {
+const Checkbox = ({ categories, handleFilters }) => {
 
     const [checked, setChecked] = useState([]);
 
@@ -18,6 +18,7 @@ const Checkbox = ({ categories }) => {
         }
 
         setChecked(newCheckedCategoryId);
+        handleFilters(newCheckedCategoryId);
 
     }
 
