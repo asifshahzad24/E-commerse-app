@@ -55,7 +55,7 @@ const AddProduct = () => {
     }
 
     useEffect(() => {
-        init()
+        init();
     }, []);
 
 
