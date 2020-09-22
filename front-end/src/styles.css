@@ -2,8 +2,8 @@
 border radious
 */
 
-.btn, 
-.jumbotron, 
+.btn,
+.jumbotron,
 .nav :hover {
     border-radius: 0px;
 }
@@ -17,9 +17,11 @@ border radious
 .black-10 {
     background: #f2f2f2;
 }
+
 .black-9 {
     background: #e6e6e6;
 }
+
 .black-8 {
     background: #d9d9d9;
 }
@@ -27,14 +29,26 @@ border radious
 .black-7 {
     background: #cccccc;
 }
+
 .black-6 {
     background: #bfbfbf;
 }
+
 .black-5 {
     background: #b3b3b3;
 }
+
 .black-4 {
     background: #f2f2f2;
+}
+
+.cart-badge,
+cart-badge:hover {
+    border-radius: 75%;
+    padding: 2px;
+    font-size: 12px;
+    font-style: italic;
+    background: #000;
 }
 
 /**
@@ -42,14 +56,14 @@ product image on card
 */
 
 .product-img {
-     min-height: 100px;
+    min-height: 100px;
 }
 
 .jumbotron h2 {
     margin-top: -20px;
 }
 
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 600px) {
     .jumbotron h2 {
         margin-top: 10px;
     }
@@ -65,38 +79,44 @@ product image on card
     -moz-animation: Gradient 15s ease infinite;
     animation: Gradient 15s ease infinite;
 }
- 
+
 @-webkit-keyframes Gradient {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
 }
- 
+
 @-moz-keyframes Gradient {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
 }
- 
+
 @keyframes Gradient {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
