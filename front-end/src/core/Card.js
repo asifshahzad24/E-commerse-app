@@ -38,11 +38,17 @@ const Card = ({
     }
   };
 
+  const removeProduct = () => {
+   
+      removeItem(product._id);
+    
+  };
+
   const showRemoveButton = (showRemoveProductButton) => {
     return (
       showRemoveProductButton && (
         <button
-          onClick={() => removeItem(product._id)}
+          onClick={removeProduct}
           className="btn btn-outline-danger mt-2 mb-2"
         >
          Remove Product

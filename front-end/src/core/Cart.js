@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import { Link } from "react-router-dom";
-import { getCart } from "./cartHelpers";
+import { getCart, removeItem } from "./cartHelpers";
 import Card from "./Card";
 import { getCategories } from "./apiCore";
 import Checkout from "./Checkout";
 
 const Cart = () => {
   const [items, setItems] = useState([]);
-
-
 
   useEffect(() => {
     setItems(getCart());
