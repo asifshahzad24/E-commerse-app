@@ -3,19 +3,20 @@ const _ = require("lodash");
 const fs = require("fs");
 const Product = require("../models/product");
 const { errorHandler } = require("../helpers/dbErrorHandler");
+const { count } = require("console");
 
 exports.productById = (req, res, next, id) => {
   Product.findById(id)
-  .populate("category")
-  .exec((err, product) => {
-    if (err || !product) {
-      res.status(400).json({
-        error: "Product not found",
-      });
-    }
-    req.product = product;
-    next();
-  });
+    .populate("category")
+    .exec((err, product) => {
+      if (err || !product) {
+        res.status(400).json({
+          error: "Product not found",
+        });
+      }
+      req.product = product;
+      next();
+    });
 };
 
 exports.read = (req, res) => {
@@ -274,6 +275,26 @@ exports.listSearch = (req, res) => {
         });
       }
       res.json(products);
-    }).select('-photo');
+    }).select("-photo");
   }
+};
+
+exports.decreaseQuantity = (req, res, next) => {
+  let bulkOps = req.body.order.products.map((item) => {
+    return {
+      updateOne: {
+        filter: { _id: item._id },
+        update: { $inc: { quantity: -item.count, sold: +item.count } },
+      },
+    };
+  });
+
+  Product.bulkWrite(bulkOps, {}, (error, products) => {
+    if (error) {
+      return res.status(400).json({
+        error: "could not update product",
+      });
+    }
+    next();
+  });
 };
