@@ -34,9 +34,9 @@ export const getCart = () => {
     if (localStorage.getItem("cart")) {
       return JSON.parse(localStorage.getItem("cart"));
     }
-  }
-
-  return [];
+  } else {
+    return [];
+  } 
 };
 
 export const updateItem = (productId, count) => {
@@ -68,7 +68,7 @@ export const removeItem = (productId) => {
         cart.splice(i, 1);
       }
     });
-
+    
     localStorage.setItem("cart", JSON.stringify(cart));
   }
   return cart;

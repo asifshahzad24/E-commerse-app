@@ -8,9 +8,10 @@ import Checkout from "./Checkout";
 
 const Cart = () => {
   const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    setItems(getCart());
+ 
+  
+  useEffect(() => {    
+    setItems(getCart());    
   }, []);
 
   const showItems = (items) => {
