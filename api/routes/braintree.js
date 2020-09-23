@@ -1,20 +1,13 @@
-const User = require("../models/user");
-const braintree = require("braintree");
-require("dotenv").config();
+const express = require('express');
+const router = express.Router();
 
-var gateway = new braintree.BraintreeGateway({
-    environment: braintree.Environment.Sandbox,
-    merchantId: process.env.BRAINTREE_MERCHANT_ID,
-    publicKey: process.env.BRAINTREE_PUBLIC_KEY,
-    privateKey: process.env.BRAINTREE_PRIVATE_KEY,
-  }); 
+const { requireSignin, isAuth } = require("../controllers/auth");
+const { userById } = require("../controllers/user");
+const { generateToken } = require("../controllers/braintree");
 
-exports.generateToken = (req, res) => {
-  gateway.clientToken.generate({}, function (err, response) {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.send(response);
-    }
-  });
-};
+router.get('/braintree/getToken/:userId', requireSignin, isAuth, generateToken );
+
+
+
+router.param('userId', userById);
+module.exports = router;
