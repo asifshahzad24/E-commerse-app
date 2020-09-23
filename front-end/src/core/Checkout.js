@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "./Layout";
+import { emptyCart, removeItem } from "./cartHelpers";
 import { getBraintreeClientToken, processPayment } from "./apiCore";
 import Card from "./Card";
 import { isAuthenticated } from "../auth";
@@ -66,6 +67,9 @@ const Checkout = ({ products }) => {
         processPayment(userId, token, paymentData)
           .then((response) => {
             setData({ ...data, success: response.success });
+            emptyCart(() => {
+              
+            });
           })
           .catch((error) => console.log(error));
       })
@@ -81,6 +85,9 @@ const Checkout = ({ products }) => {
           <DropIn
             options={{
               authorization: data.clientToken,
+              paypal: {
+                flow: 'vault'
+              }
             }}
             onInstance={(instance) => (data.instance = instance)}
           />

@@ -29,14 +29,13 @@ export const itemTotal = () => {
 };
 
 export const getCart = () => {
-  
   if (typeof window !== "undefined") {
     if (localStorage.getItem("cart")) {
       return JSON.parse(localStorage.getItem("cart"));
     }
   } else {
     return [];
-  } 
+  }
 };
 
 export const updateItem = (productId, count) => {
@@ -68,8 +67,17 @@ export const removeItem = (productId) => {
         cart.splice(i, 1);
       }
     });
-    
+
     localStorage.setItem("cart", JSON.stringify(cart));
+  }
+  return cart;
+};
+
+export const emptyCart = () => {
+  let cart = [];
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("cart");
+    return cart;
   }
   return cart;
 };
