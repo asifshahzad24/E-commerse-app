@@ -41,7 +41,7 @@ const Card = ({
   const removeProduct = () => {
    
       removeItem(product._id);
-    
+      window.location.reload(false);    
   };
 
   const showRemoveButton = (showRemoveProductButton) => {
