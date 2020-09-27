@@ -89,8 +89,10 @@ exports.remove = (req, res) => {
 };
 
 exports.update = (req, res) => {
+  console.log("asif");
   const form = new formidable.IncomingForm();
 
+  
   form.keepExtensions = true;
   form.parse(req, (err, fields, files) => {
     if (err) {
@@ -100,20 +102,22 @@ exports.update = (req, res) => {
     }
 
     // check for all fields
-    const { name, description, price, category, quantity, shipping } = fields;
+    // const { name, description, price, category, quantity, shipping } = fields;
 
-    if (
-      !name ||
-      !description ||
-      !price ||
-      !category ||
-      !quantity ||
-      !shipping
-    ) {
-      return res.status(400).json({
-        error: "All fields are required",
-      });
-    }
+    // if (
+    //   !name ||
+    //   !description ||
+    //   !price ||
+    //   !category ||
+    //   !quantity ||
+    //   !shipping
+    // ) {
+    //   return res.status(400).json({
+    //     error: "All fields are required",
+    //   });
+    // }
+   
+
 
     let product = req.product;
     product = _.extend(product, fields);
